@@ -1,0 +1,15 @@
+[Unit]
+Description=LLM Reasoning Proxy FastAPI Service
+After=network.target
+
+[User]
+User=somath
+WorkingDirectory=/home/somath/ScyWare/llm-proxy
+Environment="PATH=/home/somath/ScyWare/llm-proxy/.venv/bin"
+Environment="GROQ_API_KEY=tu_groq_api_key_aqui"
+Environment="PROXY_HOST=192.168.56.1"
+Environment="PROXY_PORT=8080"
+ExecStart=/home/somath/ScyWare/llm-proxy/.venv/bin/uvicorn main:app --host 192.168.56.1 --port 8080
+
+[Install]
+WantedBy=multi-user.target
